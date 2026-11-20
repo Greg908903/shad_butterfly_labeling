@@ -1,0 +1,8 @@
+name: owlv2
+checkpoint: google/owlv2-base-patch16-ensemble
+revision: cfd3195ba4ea9592eec887ded089f4c08eff231d
+
+queries:
+  - "a photo of a butterfly"
+  - "a photo of a moth"
+box_threshold: 0.2

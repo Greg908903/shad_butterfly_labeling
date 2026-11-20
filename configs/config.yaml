@@ -1,0 +1,15 @@
+defaults:
+  - model: grounding_dino
+  - _self_
+
+images_dir: data/dataset_images
+output_dir: outputs/${model.name}/${now:%Y-%m-%d_%H-%M-%S-%f}
+
+device: cuda
+save_visualizations: true
+
+hydra:
+  run:
+    dir: ${output_dir}
+  job:
+    chdir: false

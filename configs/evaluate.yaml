@@ -1,0 +1,30 @@
+# Replace the reference when human golden labels arrive. JSON array and JSONL use the same record schema.
+reference_path: /home/greg/Desktop/SHAD_Labeling_Project/final_ai_labeling/annotations.jsonl
+
+# reference: evaluate ALL reference IDs; ignore and report extra predictions.
+# exact: require identical reference/prediction ID sets.
+scope: reference
+metadata_path: null
+
+# Explicit files, not an automatic choice of the latest model run.
+# run_path is optional (null disables timing), and must be from the same folder as predictions_path.
+runs:
+  grounding_dino:
+    predictions_path: outputs/grounding_dino/2026-11-19_23-30-25-017380/predictions.jsonl
+    run_path: outputs/grounding_dino/2026-11-19_23-30-25-017380/run.json
+  owlv2:
+    predictions_path: outputs/owlv2/2026-11-19_23-27-12-547095/predictions.jsonl
+    run_path: outputs/owlv2/2026-11-19_23-27-12-547095/run.json
+  qwen:
+    predictions_path: outputs/qwen/2026-11-19_23-14-56-879737/predictions.jsonl
+    run_path: outputs/qwen/2026-11-19_23-14-56-879737/run.json
+
+# Save a headless Matplotlib PNG table next to JSON/CSV results.
+save_table: true
+output_dir: outputs/evaluation/${now:%Y-%m-%d_%H-%M-%S-%f}
+
+hydra:
+  run:
+    dir: ${output_dir}
+  job:
+    chdir: false

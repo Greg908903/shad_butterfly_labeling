@@ -1,0 +1,18 @@
+name: qwen
+checkpoint: Qwen/Qwen3-VL-2B-Instruct
+revision: 89644892e4d85e24eaac8bacfd4f463576704203
+
+prompt: >-
+  Locate every adult butterfly and moth in the image, including night-flying moths.
+  Exclude other insects, caterpillars, larvae and pupae. Return one tight bounding
+  box per individual covering all visible parts, including wings, body, antennae
+  and legs. Do not extrapolate hidden parts. Use xyxy coordinates [x1, y1, x2, y2]
+  normalized to 0-1000 relative to the full image (top-left is [0, 0], bottom-right
+  is [1000, 1000]). Output only a JSON array of objects with this exact format:
+  [{"bbox_2d": [x1, y1, x2, y2]}]. If there are no adult butterflies or moths,
+  output exactly []. Do not include explanations, labels or confidence scores.
+
+max_new_tokens: 1024
+# Pixel counts, not side lengths: approximately 256-2048 visual tokens.
+min_pixels: 262144
+max_pixels: 1048576
